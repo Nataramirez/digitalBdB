@@ -13,13 +13,6 @@ router.post('/', async function (req, res) {
             birth
         });
 
-        /*
-        if(nameRelationship){
-            await newPerson.addRelationship(nameRelationship);
-
-        }
-        */
-
        return res.json(newPerson);
 
     } catch (error) {
@@ -28,55 +21,29 @@ router.post('/', async function (req, res) {
 
 
 })
-/*
-router.post('/', async function(req, res){
-    try {
-        let { name, lastName, birth, nameRelationship } = req.body;
 
-        const [ 
-            createPerson, 
-            createRelationship, 
-        ] = Promise.all([
-            Person.create({
-                name,
-                lastName,
-                birth
-            },
-            {
-                fields: [
-                    "name",
-                    "lastName",
-                    "birth"
-                ]
-            }),
-            Relationship.create({
-                nameRelationship
-            },
-            {
-                fields: [ "nameRelationship" ], 
-            })
-        ]);
-
-        await createPerson.setRelationship(createRelationship);
-
-        let newObject = {
-            ...createPerson.dataValues,
-            ...createRelationship.dataValues,
-        };
-        
-        res.send().json(newObject);
-
-    } catch (error) {
-        res.send(error);
-    }
-    
-      
-})
-*/
+// llamar a todos las personas creadas
 router.get('/', async function (req, res) {
     const peopleList = await Person.findAll();
 
     res.send(peopleList);
 })
+
+// busqueda por id
+router.get('/:id', async function (req, res) {
+    const { id } = req.params;
+
+    try {
+        const responseDb = await Person.findAll({
+            where: { id: id },
+        })
+
+        responseDb.length > 0 ? res.send(responseDb) : res.send('persona no encontrada')
+
+    } catch (error) {
+        res.send(error)
+    }
+})
+
 
 module.exports = router;

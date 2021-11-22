@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Nataramirez/digitalBdB#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
   }
 }

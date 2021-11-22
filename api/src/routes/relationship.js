@@ -3,8 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
+    const relationship = [ "mother", "father", "none"]
+
     try {
-        const relationship = [ "mother", "father", "none"]
+       
        
        const dbRelationship = await Promise.all(
            relationship.map(e => Relationship.findOrCreate({
