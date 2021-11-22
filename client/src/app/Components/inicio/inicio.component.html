@@ -1,0 +1,26 @@
+<div class="container">
+    <p class="h5">Lista de personas</p>
+    <br />
+    <button routerLink="/add" type="button" class="btn btn-outline-success">Agregar</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Fecha de nacimiento</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let person of ListarEquipo">
+                <th scope="row">{{person.id}}</th>
+                <td>{{person.name}}</td>
+                <td>{{person.lastName}}</td>
+                <td>{{person.birth}}</td>
+                
+            </tr>
+
+        </tbody>
+    </table>
+</div>
