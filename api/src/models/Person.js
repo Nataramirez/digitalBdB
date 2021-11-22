@@ -6,7 +6,20 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      fullName: {
+        type: DataTypes.VIRTUAL,
+        get() {
+            return `${this.name} ${this.lastName}`;
+        }
+      },
+      birth: {
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     }, {
       timestamps: false,

@@ -4,7 +4,7 @@
   "description": "prueba",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "start": "nodemon -L"
   },
   "repository": {
@@ -27,5 +27,8 @@
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.12.0-alpha.1"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
   }
 }
